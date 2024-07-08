@@ -1,20 +1,22 @@
 package com.dingjiaxiong.xiongso_backend.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.dingjiaxiong.xiongso_backend.model.dto.user.UserQueryRequest;
 import com.dingjiaxiong.xiongso_backend.model.entity.User;
 import com.dingjiaxiong.xiongso_backend.model.vo.LoginUserVO;
 import com.dingjiaxiong.xiongso_backend.model.vo.UserVO;
+
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+
 import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
 
 /**
  * 用户服务
  *
  * @author Ding Jiaxiong
- * 
  */
 public interface UserService extends IService<User> {
 
@@ -117,5 +119,12 @@ public interface UserService extends IService<User> {
      * @return
      */
     QueryWrapper<User> getQueryWrapper(UserQueryRequest userQueryRequest);
+
+    /**
+     * 分页查询用户
+     *
+     * @param userQueryRequest
+     */
+    Page<UserVO> listUserVOByPage(UserQueryRequest userQueryRequest);
 
 }

@@ -6,13 +6,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.dingjiaxiong.xiongso_backend.model.dto.post.PostQueryRequest;
 import com.dingjiaxiong.xiongso_backend.model.entity.Post;
 import com.dingjiaxiong.xiongso_backend.model.vo.PostVO;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * 帖子服务
  *
  * @author Ding Jiaxiong
- * 
  */
 public interface PostService extends IService<Post> {
 
@@ -57,4 +57,13 @@ public interface PostService extends IService<Post> {
      * @return
      */
     Page<PostVO> getPostVOPage(Page<Post> postPage, HttpServletRequest request);
+
+    /**
+     * 分页查询帖子
+     *
+     * @param postQueryRequest
+     * @param request
+     * @return
+     */
+    Page<PostVO> listPostVOByPage(PostQueryRequest postQueryRequest, HttpServletRequest request);
 }

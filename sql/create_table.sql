@@ -25,6 +25,24 @@ create table if not exists user
     index idx_unionId (unionId)
 ) comment '用户' collate = utf8mb4_unicode_ci;
 
+-- 插入用户表的模拟数据
+INSERT INTO user (userAccount, userPassword, unionId, mpOpenId, userName, userAvatar, userProfile, userRole, createTime,
+                  updateTime, isDelete)
+VALUES ('zhangsan', 'e10adc3949ba59abbe56e057f20f883e', 'wx123456', 'mp123456', '张三',
+        'http://example.com/avatar_zhangsan.jpg', '喜欢读书和写作', 'user', '2024-06-01 08:30:00',
+        '2024-06-01 08:30:00', 0),
+       ('lisi', '25d55ad283aa400af464c76d713c07ad', 'wx789012', 'mp789012', '李四',
+        'http://example.com/avatar_lisi.jpg', '热爱绘画和艺术', 'admin', '2024-06-02 09:00:00', '2024-06-02 09:00:00',
+        0),
+       ('wangwu', 'd8578edf8458ce06fbc5bb76a58c5ca4', NULL, 'mp345678', '王五', 'http://example.com/avatar_wangwu.jpg',
+        '喜欢徒步和户外活动', 'user', '2024-06-03 10:15:00', '2024-06-03 10:15:00', 0),
+       ('zhaoliu', '5f4dcc3b5aa765d61d8327deb882cf99', 'wx345678', NULL, '赵六',
+        'http://example.com/avatar_zhaoliu.jpg', '美食博主和厨师', 'ban', '2024-06-04 11:45:00', '2024-06-04 11:45:00',
+        0),
+       ('sunqi', '96e79218965eb72c92a549dd5a330112', NULL, NULL, '孙七', 'http://example.com/avatar_sunqi.jpg',
+        '科技爱好者和游戏玩家', 'user', '2024-06-05 12:00:00', '2024-06-05 12:00:00', 0);
+
+
 -- 帖子表
 create table if not exists post
 (

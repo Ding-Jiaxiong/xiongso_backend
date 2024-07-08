@@ -7,7 +7,6 @@ import lombok.Data;
  * 分页请求
  *
  * @author Ding Jiaxiong
- * 
  */
 @Data
 public class PageRequest {
@@ -15,12 +14,12 @@ public class PageRequest {
     /**
      * 当前页号
      */
-    private int current = 1;
+    private long current = 1;
 
     /**
      * 页面大小
      */
-    private int pageSize = 10;
+    private long pageSize = 10;
 
     /**
      * 排序字段

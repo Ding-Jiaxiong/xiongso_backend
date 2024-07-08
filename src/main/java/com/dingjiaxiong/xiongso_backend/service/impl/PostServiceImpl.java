@@ -21,6 +21,7 @@ import com.dingjiaxiong.xiongso_backend.model.vo.UserVO;
 import com.dingjiaxiong.xiongso_backend.service.PostService;
 import com.dingjiaxiong.xiongso_backend.service.UserService;
 import com.dingjiaxiong.xiongso_backend.utils.SqlUtils;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +30,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
 import lombok.extern.slf4j.Slf4j;
 import cn.hutool.core.collection.CollUtil;
 import org.apache.commons.lang3.ObjectUtils;
@@ -50,7 +52,6 @@ import org.springframework.stereotype.Service;
  * 帖子服务实现
  *
  * @author Ding Jiaxiong
- * 
  */
 @Service
 @Slf4j
@@ -305,6 +306,14 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
         return postVOPage;
     }
 
+    @Override
+    public Page<PostVO> listPostVOByPage(PostQueryRequest postQueryRequest, HttpServletRequest request) {
+        long current = postQueryRequest.getCurrent();
+        long pageSize = postQueryRequest.getPageSize();
+        Page<Post> postPage = this.page(new Page<>(current, pageSize),
+                this.getQueryWrapper(postQueryRequest));
+        return this.getPostVOPage(postPage, request);
+    }
 }
 
 
